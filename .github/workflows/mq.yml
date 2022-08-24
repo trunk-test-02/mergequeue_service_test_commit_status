@@ -1,0 +1,37 @@
+name: MergeQueue
+
+on:
+  workflow_dispatch:
+
+jobs:
+  merge-queue:
+    name: Run MergeQueue checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: build
+        run: sleep 20s 
+      
+      - name: Check run forever file existence
+        id: run_forever
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "test/run_forever.txt"
+
+      - name: Run forever
+        if: steps.run_forever.outputs.files_exists == 'true'
+        run: sleep 180s
+        
+      - name: Check test failure file exists
+        id: fail_test
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "test/fail_test.txt"
+
+      - name: fail
+        if: steps.fail_test.outputs.files_exists == 'true'
+        run: exit 1
+

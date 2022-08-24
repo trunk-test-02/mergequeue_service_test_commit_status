@@ -1,0 +1,20 @@
+cli:
+  sha256:
+    darwin_x86_64: 80ccc8c9dfc1dfb2ab911fceab65491700371aa8c496de205a9e5e97a7b5325c
+    linux_x86_64: 791979441af605c631338ede3f442cc3c7d27e262b95777faf0c965de6e19ea4
+  version: 0.11.0-beta
+lint:
+  enabled:
+    - gitleaks@7.6.1
+    - prettier@2.4.1
+merge:
+  statuses:
+    - Trunk Merge Smoke Test
+version: 0.1
+api:
+  address: api.trunk-staging.io:5021
+repo:
+  repo:
+    host: github.com
+    owner: trunk-test-02
+    name: mergequeue_service_test
