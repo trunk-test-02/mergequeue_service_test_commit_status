@@ -9,7 +9,7 @@ lint:
     - prettier@2.4.1
 merge:
   statuses:
-    - Trunk Merge Smoke Test
+    - buildkite/trunk-merge-smoke-test
 version: 0.1
 api:
   address: api.trunk-staging.io:5021
