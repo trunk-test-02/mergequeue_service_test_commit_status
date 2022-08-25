@@ -1,1 +1,1 @@
-# mergequeue_service_test_commit_status
+# Merge Queue Service Smoke Tests (Commit Status)
