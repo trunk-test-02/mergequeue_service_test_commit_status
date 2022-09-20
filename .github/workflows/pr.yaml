@@ -22,9 +22,9 @@ jobs:
 
       - name: Check run forever file existence
         id: run_forever
-        uses: andstor/file-existence-action@v1
+        uses: technote-space/get-diff-action@v6
         with:
-          files: "test/run_forever.txt"
+          PATTERNS: test/run_forever*.txt
 
       - name: Run forever
         if: steps.run_forever.outputs.files_exists == 'true' && contains('trunk-merge', github.ref)
