@@ -19,3 +19,13 @@ jobs:
 
       - name: build
         run: sleep 2s
+
+      - name: Check run forever file existence
+        id: run_forever
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "test/run_forever.txt"
+
+      - name: Run forever
+        if: steps.run_forever.outputs.files_exists == 'true' && contains('trunk-merge', github.ref)
+        run: sleep 180s
