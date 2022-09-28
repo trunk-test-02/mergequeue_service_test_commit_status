@@ -27,5 +27,5 @@ jobs:
           PATTERNS: test/run_forever*.txt
 
       - name: Run forever
-        if: steps.run_forever.outputs.files_exists == 'true' && contains('trunk-merge', github.ref)
+        if: steps.run_forever.outputs.diff && contains('trunk-merge', github.ref)
         run: sleep 180s
