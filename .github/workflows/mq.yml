@@ -19,7 +19,7 @@ jobs:
         id: run_forever
         uses: andstor/file-existence-action@v1
         with:
-          files: "test/run_forever.txt"
+          files: "test/run_forever*.txt"
 
       - name: Run forever
         if: steps.run_forever.outputs.files_exists == 'true'
@@ -29,7 +29,7 @@ jobs:
         id: fail_test
         uses: andstor/file-existence-action@v1
         with:
-          files: "test/fail_test.txt"
+          files: "test/fail_test*.txt"
 
       - name: fail
         if: steps.fail_test.outputs.files_exists == 'true'
