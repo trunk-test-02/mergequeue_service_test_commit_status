@@ -31,5 +31,5 @@ jobs:
         run: echo $BRANCH_NAME
 
       - name: Run forever
-        if: steps.run_forever.outputs.diff && contains('trunk-merge', env.BRANCH_NAME)
+        if: steps.run_forever.outputs.diff && startsWith(env.BRANCH_NAME, 'trunk-merge')
         run: sleep 180s
