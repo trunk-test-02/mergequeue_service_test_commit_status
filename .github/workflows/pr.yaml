@@ -7,6 +7,8 @@ on:
     branches:
       - trunk-merge/**
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   pr:
@@ -26,6 +28,9 @@ jobs:
         with:
           PATTERNS: test/run_forever*.txt
 
+      - name: See branch name
+
+
       - name: Run forever
-        if: steps.run_forever.outputs.diff && contains('trunk-merge', github.ref)
+        if: steps.run_forever.outputs.diff && contains('trunk-merge', $BRANCH_NAME)
         run: sleep 180s
