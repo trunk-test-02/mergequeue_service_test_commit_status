@@ -7,11 +7,12 @@ on:
     branches:
       - trunk-merge/**
 
-
 jobs:
   pr:
     name: Run Pull Request checks
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
     steps:
       - name: Checkout code
@@ -26,6 +27,9 @@ jobs:
         with:
           PATTERNS: test/run_forever*.txt
 
+      - name: Check branch name
+        run: echo $BRANCH_NAME
+
       - name: Run forever
-        if: steps.run_forever.outputs.diff && contains('trunk-merge', github.ref)
+        if: steps.run_forever.outputs.diff && startsWith(env.BRANCH_NAME, 'trunk-merge')
         run: sleep 180s
