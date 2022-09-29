@@ -27,6 +27,9 @@ jobs:
         with:
           PATTERNS: test/run_forever*.txt
 
+      - name: Check branch name
+        run: echo $BRANCH_NAME
+
       - name: Run forever
         if: steps.run_forever.outputs.diff && contains('trunk-merge', env.BRANCH_NAME)
         run: sleep 180s
