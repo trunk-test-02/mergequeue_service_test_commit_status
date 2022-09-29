@@ -24,10 +24,10 @@ jobs:
 
       - name: Check run forever file existence
         id: run_forever
-        uses: technote-space/get-diff-action@v6
+        uses: andstor/file-existence-action@v1
         with:
-          PATTERNS: test/run_forever*.txt
+          files: "test/run_forever*.txt"
 
       - name: Run forever
-        if: steps.run_forever.outputs.diff && startsWith(env.BRANCH_NAME, 'trunk-merge')
+        if: steps.run_forever.outputs.files_exists == 'true' && startsWith(env.BRANCH_NAME, 'trunk-merge')
         run: sleep 180s
