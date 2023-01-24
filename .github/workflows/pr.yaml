@@ -10,7 +10,7 @@ on:
 
 jobs:
   pr:
-    name: Run Pull Request checks
+    name: Run Pull Request checks 🥳
     runs-on: ubuntu-latest
     env:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
