@@ -10,7 +10,7 @@ lint:
 merge:
   required_statuses:
     - buildkite/trunk-merge-smoke-test
-    - Run Pull Request checks
+    - Run Pull Request checks 🥳
 version: 0.1
 api:
   address: api.trunk-staging.io:5021
