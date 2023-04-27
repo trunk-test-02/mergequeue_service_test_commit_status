@@ -9,7 +9,11 @@ lint:
     - prettier@2.4.1
 merge:
   required_statuses:
-    - buildkite/trunk-merge-smoke-test
+    # Currently, buildkite/trunk-merge-smoke-test is taking a long time
+    # to run / report status to GH, which is causing smoke tests to fail
+    # since MQ won't merge a PR until that check finishes.
+    # Reference - https://trunk-io.slack.com/archives/C0272DLKGLF/p1682604350559439?thread_ts=1682549002.219079&cid=C0272DLKGLF
+    # buildkite/trunk-merge-smoke-test
     - Run Pull Request checks
 version: 0.1
 api:
